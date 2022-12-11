@@ -1,0 +1,8 @@
+[ 
+    {"id": "001", "sector": "Sector A", "precio": 15000, "imagen": "./img/1.jpg"},
+    {"id": "002","sector": "Sector B", "precio": 10000, "imagen": "./img/2.jpg"},
+    {"id": "003", "sector": "Sector C", "precio": 8500, "imagen": "./img/3.jpg"}
+   
+
+]
+
