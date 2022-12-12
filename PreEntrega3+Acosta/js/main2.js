@@ -1,5 +1,5 @@
 const listado = document.getElementById("listado");
-let botonesAgregar= document.querySelectorAll(".producto-agregar");
+// let botonesAgregar= document.querySelectorAll(".producto-agregar");
 let acumulador= document.querySelector("#acumulador");
 
 
@@ -19,60 +19,69 @@ fetch(listadoProductos)
                         <button class="producto-agregar" id="${producto.id}"> Agregar a carrito </button>
                          </div>
                         `
-             });
+                     const botonAgregar = document.getElementById (`${producto.id}`);
+                     botonAgregar.addEventListener(`click`, () => {
+                        agregarAlCarrito(producto.id);                     ///aca intento traer una funcion 
+                     });
+
              
-             actualizarBotonesAgregar ()
+   
+   
+                     });
+             
+            
              
 });
 
 
+// function actualizarBotonesAgregar () {
+//    botonesAgregar = document.querySelectorAll(".producto-agregar");
 
+//    botonesAgregar.forEach (boton => {
+//        boton.addEventListener("click", agregarAlCarrito); 
+//    });
+// }
 
-function actualizarBotonesAgregar () {
-   botonesAgregar = document.querySelectorAll(".producto-agregar");
+// let productosEnCarrito;
 
-   botonesAgregar.forEach (boton => {
-       boton.addEventListener("click", agregarAlCarrito); 
-   });
-}
-
-let productosEnCarrito;
-
-let productosEnCarritoLS= localStorage.getItem("productos-en-carrito");
+// let productosEnCarritoLS= localStorage.getItem("productos-en-carrito");
 
 
 
-if (productosEnCarritoLS) {
-   productosEnCarrito= JSON.parse(productosEnCarritoLS);
-   actualizarAcumulador();
+// if (productosEnCarritoLS) {
+//    productosEnCarrito= JSON.parse(productosEnCarritoLS);
+//    actualizarAcumulador();
   
-} else {
-   productosEnCarrito = [];
-}
+// } else {
+//    productosEnCarrito = [];
+// }
 
-function agregarAlCarrito (e) {
+// function agregarAlCarrito (e) {
   
-   const idBoton= e.currentTarget.id;
-   const productoAgregado = productos.find (producto => producto.id === idBoton);
+//    const idBoton= e.currentTarget.id;
+//    const productoAgregado = productos.find (producto => producto.id === idBoton);
   
-   if (productosEnCarrito.some (producto => producto.id === idBoton)) {
-      const index = productosEnCarrito.findIndex (producto => producto.id === idBoton);
-      productosEnCarrito[index].cantidad++;
+//    if (productosEnCarrito.some (producto => producto.id === idBoton)) {
+//       const index = productosEnCarrito.findIndex (producto => producto.id === idBoton);
+//       productosEnCarrito[index].cantidad++;
 
-   } else {
-       productoAgregado.cantidad= 1; 
-       productosEnCarrito.push(productoAgregado);
-   } 
+//    } else {
+//        productoAgregado.cantidad= 1; 
+//        productosEnCarrito.push(productoAgregado);
+//    } 
 
-   actualizarAcumulador();
+//    actualizarAcumulador();
   
-   localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-}       
+//    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+// }       
 
-function actualizarAcumulador(){
-   let nuevoAcumulador = productosEnCarrito.reduce ((acc, producto) => acc + producto.cantidad, 0);
-   acumulador.innerText = nuevoAcumulador;
-}
+// function actualizarAcumulador(){
+//    let nuevoAcumulador = productosEnCarrito.reduce ((acc, producto) => acc + producto.cantidad, 0);
+//    acumulador.innerText = nuevoAcumulador;
+// }
+
+
+
 
 
 
