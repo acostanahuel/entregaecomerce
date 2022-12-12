@@ -28,10 +28,6 @@ fetch(listadoProductos)
 
 
 
-
-/////mis funciones cuando estaba cargando productos por array
-
-
 function actualizarBotonesAgregar () {
    botonesAgregar = document.querySelectorAll(".producto-agregar");
 
