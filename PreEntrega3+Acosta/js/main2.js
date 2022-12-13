@@ -17,7 +17,7 @@ fetch(listadoProductos)
                         <p class="producto-precio">$${producto.precio}</p>
                         <button onclick="agregarAlCarrito(${producto.id})" class="producto-agregar" id="${producto.id}"> Agregar a carrito </button>
                         </div>
-                        `;
+                        `;                  ///aca intento hacer la funcion agregar al carrito///
                        
                              
                      });
