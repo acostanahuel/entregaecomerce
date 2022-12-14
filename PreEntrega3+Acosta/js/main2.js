@@ -15,16 +15,32 @@ fetch(listadoProductos)
                         <div class="producto-detalles">
                         <h3 class="producto-titulo">${producto.sector}</h3>
                         <p class="producto-precio">$${producto.precio}</p>
-                        <button onclick="agregarAlCarrito(${producto.id})" class="producto-agregar" id="${producto.id}"> Agregar a carrito </button>
+                        <button onclick="agregarAlCarrito(${producto.id})" "class="producto-agregar"> Agregar </button>
                         </div>
-                        `;                  ///aca intento hacer la funcion agregar al carrito///
+                        `;
                        
                              
                      });
 
  });
              
- function agregarAlCarrito (e) {
+
+let productosEnCarrito;
+
+let productosEnCarritoLS= localStorage.getItem("productos-en-carrito");
+
+
+
+if (productosEnCarritoLS) {
+   productosEnCarrito= JSON.parse(productosEnCarritoLS);
+   actualizarAcumulador();
+  
+} else {
+   productosEnCarrito = [];
+}
+
+
+function agregarAlCarrito (e) {
   
    const idBoton= e.currentTarget.id;
    const productoAgregado = productos.find (producto => producto.id === idBoton);
@@ -42,3 +58,8 @@ fetch(listadoProductos)
   
    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }       
+
+function actualizarAcumulador(){
+   let nuevoAcumulador = productosEnCarrito.reduce ((acc, producto) => acc + producto.cantidad, 0);
+   acumulador.innerText = nuevoAcumulador;
+}
