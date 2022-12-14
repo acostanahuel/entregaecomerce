@@ -15,14 +15,19 @@ fetch(listadoProductos)
                         <div class="producto-detalles">
                         <h3 class="producto-titulo">${producto.sector}</h3>
                         <p class="producto-precio">$${producto.precio}</p>
-                        <button onclick="agregarAlCarrito(${producto.id})" "class="producto-agregar"> Agregar </button>
+                        <button class="producto-agregar" id="${producto.id}"> Agregar a carrito </button>
                         </div>
                         `;
-                       
-                             
+                        const boton = document.getElementById(`${producto.id}`);
+                        boton.addEventListener('click', () => {
+                          agregarAlCarrito(producto.id);
+                        });         
                      });
 
- });
+             
+   
+   
+      });
              
 
 let productosEnCarrito;
@@ -38,7 +43,6 @@ if (productosEnCarritoLS) {
 } else {
    productosEnCarrito = [];
 }
-
 
 function agregarAlCarrito (e) {
   
