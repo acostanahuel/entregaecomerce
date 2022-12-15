@@ -18,16 +18,18 @@ fetch(listadoProductos)
                         <button class="producto-agregar" id="${producto.id}"> Agregar a carrito </button>
                         </div>
                         `;
-                        const boton = document.getElementById(`${producto.id}`);
-                        boton.addEventListener('click', () => {
-                          agregarAlCarrito(producto.id);
-                        });         
+                      }); 
+         stock.forEach ((producto) => {
+            const boton =document.getElementById(`${producto.id}`);
+            boton.addEventListener(`click`, () => {
+                     agregarAlCarrito(producto.id);
+            });
+         });
                      });
 
              
    
    
-      });
              
 
 let productosEnCarrito;
@@ -44,9 +46,9 @@ if (productosEnCarritoLS) {
    productosEnCarrito = [];
 }
 
-function agregarAlCarrito (e) {
+function agregarAlCarrito (id) {
   
-   const idBoton= e.currentTarget.id;
+   const idBoton= id.currentTarget.id;
    const productoAgregado = productos.find (producto => producto.id === idBoton);
   
    if (productosEnCarrito.some (producto => producto.id === idBoton)) {
@@ -67,3 +69,4 @@ function actualizarAcumulador(){
    let nuevoAcumulador = productosEnCarrito.reduce ((acc, producto) => acc + producto.cantidad, 0);
    acumulador.innerText = nuevoAcumulador;
 }
+
